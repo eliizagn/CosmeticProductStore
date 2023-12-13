@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CosmeticProductStore.Client.Controllers
 {
+    [ApiController]
+    [Route("[controller]")]
     public class ProductController : ControllerBase
     {
         private readonly IProductRepository _productRepository;
@@ -19,7 +21,7 @@ namespace CosmeticProductStore.Client.Controllers
         /// </summary>
         /// <param name="id">Наименование продукта</param>
 
-        [HttpGet("{Id:int}")]
+        [HttpGet("{id:int}")]
         public Product Get(int id)
         {
             var product = _productRepository.GetProductById(id);
@@ -31,7 +33,7 @@ namespace CosmeticProductStore.Client.Controllers
         /// </summary>
         /// <param name="body"></param>
 
-        [HttpPost("{Id:int}")]
+        [HttpPost("CreatingProduct")]
         public ActionResult Create(CreateProduct product)
         {
             _productRepository.CreateProduct(product);
@@ -44,7 +46,7 @@ namespace CosmeticProductStore.Client.Controllers
         /// <param name="cosmeticId">Идентификатор продукта</param>
 
 
-        [HttpDelete("Id:int")]
+        [HttpDelete("Deleting Product")]
         public void Delete(int ID) => Products.RemoveAt(ID);
 
     }

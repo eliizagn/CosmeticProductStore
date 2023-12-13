@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using static System.Formats.Asn1.AsnWriter;
+using CosmeticProductStore.BLL.Models;
 
 namespace CosmeticProductStore.BLL.Repositories;
 
@@ -24,10 +25,13 @@ public class ProductRepository : IProductRepository
         return _dbContext.Products.FirstOrDefault(p => p.Id == id);
     }
 
-    public void CreateProduct(Product product)
+    public void CreateProduct(CreateProduct product)
     {
-        var storeEntity = new Product();
-        storeEntity.Name = product.Name;
+        var productEntity = new Product();
+        productEntity.Name = product.Name;
+        _dbContext.SaveChanges();
+
+        _dbContext.Products.Add(productEntity);
         _dbContext.SaveChanges();
     }
     public void DeleteProduct(int id)

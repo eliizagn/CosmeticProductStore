@@ -1,14 +1,10 @@
-﻿using CosmeticProductStore.DAL.Data.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CosmeticProductStore.BLL.Models;
+using CosmeticProductStore.DAL.Data.Models;
 
 namespace CosmeticProductStore.BLL.Repositories;
 
-public interface IProductRepository
+public interface IProductRepository 
 {
     Product GetProductById(int id);
-    void CreateProduct(Product product);
+    void CreateProduct(CreateProduct product);
 }

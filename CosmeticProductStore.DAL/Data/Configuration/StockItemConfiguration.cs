@@ -19,5 +19,12 @@ public class StockItemConfiguration
         builder.Property(p => p.Quantity).HasColumnName("quantity").HasMaxLength(20).IsRequired();
         builder.Property(p => p.Price).HasColumnName("price").HasMaxLength(20).IsRequired();
 
+        builder.HasOne(stockItem => stockItem.Product)
+            .WithMany(p => p.StockItems)
+            .HasForeignKey(ps => ps.ProductId);
+
+        builder.HasOne(stockItem => stockItem.Store)
+            .WithMany(s => s.StockItems)
+            .HasForeignKey(ps => ps.StoreCode);
     }
 }

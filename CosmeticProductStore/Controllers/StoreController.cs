@@ -20,7 +20,7 @@ public class StoreController : ControllerBase
     /// </summary>
     /// <param name="id">Наименование магазина</param>
 
-    [HttpGet("{storeCode:int}")]
+    [HttpGet("Searching Store")]
     public Store Get(int storeCode)
     {
         var store = _storeRepository.GetStoreByCode(storeCode);
@@ -39,7 +39,7 @@ public class StoreController : ControllerBase
     /// </summary>
     /// <param name="body"></param>
 
-    [HttpPost("{storeCode:int}")]
+    [HttpPost("Creating Store")]
     public ActionResult Create(CreateStore store)
     {
         _storeRepository.CreateStore(store);
@@ -51,7 +51,7 @@ public class StoreController : ControllerBase
     /// </summary>
     /// <param name="cosmeticId">Идентификатор продукта</param>
 
-    [HttpDelete("storeCode:int")]
+    [HttpDelete("Deleting Store")]
     public void Delete(int ID) => Stores.RemoveAt(ID);
 
 }
